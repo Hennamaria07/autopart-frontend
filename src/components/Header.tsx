@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Search, ShoppingCart, Menu, User } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./ui/Sheet";
 import { Button } from "./ui/Button";
 import { Input } from "./ui/Input";
@@ -12,7 +12,6 @@ interface NavItem {
 }
 
 export function Header() {
-  const location = useLocation();
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
   useEffect(() => {
@@ -70,9 +69,7 @@ export function Header() {
               <Link
                 key={item.href}
                 to={item.href}
-                className={`text-sm font-medium transition-colors hover:text-blue-600 ${
-                  location.pathname === item.href ? "text-blue-600" : "text-muted-foreground"
-                }`}
+                className={`text-sm font-medium transition-colors hover:text-blue-600 text-muted-foreground`}
               >
                 {item.label}
               </Link>
@@ -87,13 +84,13 @@ export function Header() {
           </div>
           <Button variant="ghost" size="icon">
             <Link to="/cart">
-              <ShoppingCart className="h-5 w-5" />
+              <ShoppingCart className="h-5 w-5 text-black" />
               <span className="sr-only">Shopping cart</span>
             </Link>
           </Button>
           <Button variant="ghost" size="icon">
             <Link to="/account">
-              <User className="h-5 w-5" />
+              <User className="h-5 w-5 text-black" />
               <span className="sr-only">Account</span>
             </Link>
           </Button>
