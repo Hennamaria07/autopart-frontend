@@ -1,19 +1,10 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import { Search, ShoppingCart, Menu, User } from "lucide-react";
-import { Link } from "react-router-dom";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./ui/Sheet";
-import { Button } from "./ui/Button";
 import { Input } from "./ui/Input";
 
-interface NavItem {
-  href: string;
-  label: string;
-}
-
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState<boolean>(false);
-
+  const [isScrolled, setIsScrolled] = useState(false);
+  
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
@@ -22,80 +13,97 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems: NavItem[] = [
-    { href: "/", label: "Home" },
-    { href: "/catalog", label: "Catalog" },
-    { href: "/brands", label: "Brands" },
-    { href: "/garage", label: "My Garage" },
-  ];
+  const handleNavigation = (path: string) => {
+    window.location.href = path;
+    console.log('Navigating to:', path);
+  };
 
   return (
-    <header
-      className={`sticky top-0 z-50 w-full transition-all duration-200 ${
-        isScrolled ? "bg-white/80 backdrop-blur-sm" : "bg-transparent"
-      }`}
-    >
+    <div className={`sticky top-0 z-50 w-full ${
+      isScrolled ? "bg-white/80 backdrop-blur-sm" : "bg-white"
+    }`}>
       <div className="container flex h-16 items-center justify-between">
+        {/* Left section */}
         <div className="flex items-center gap-6">
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Toggle menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left">
-              <SheetHeader>
-                <SheetTitle>Menu</SheetTitle>
-              </SheetHeader>
-              <nav className="grid gap-4 py-4">
-                {navItems.map((item) => (
-                  <Link key={item.href} to={item.href} className="text-lg font-medium">
-                    {item.label}
-                  </Link>
-                ))}
-              </nav>
-            </SheetContent>
-          </Sheet>
+          {/* Menu Button (Mobile) */}
+          <div className="md:hidden">
+            <button 
+              onClick={() => console.log('Menu clicked')}
+              className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded"
+            >
+              <Menu className="h-5 w-5" />
+            </button>
+          </div>
 
-          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }}>
-            <Link to="/" className="text-xl font-bold text-blue-600">
-              AutoParts
-            </Link>
-          </motion.div>
+          {/* Logo */}
+          <button
+            onClick={() => handleNavigation('/')}
+            className="text-blue-500 font-bold text-2xl"
+          >
+            AutoParts
+          </button>
 
-          <nav className="hidden md:flex items-center gap-6">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                to={item.href}
-                className={`text-sm font-medium transition-colors hover:text-blue-600 text-muted-foreground`}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+
+          {/* Navigation Items */}
+          <div className="hidden md:flex items-center gap-4">
+            <button
+              onClick={() => handleNavigation('/')}
+              className="text-black p-2 rounded hover:bg-blue-500 hover:text-white"
+            >
+              Home
+            </button>
+            <button
+              onClick={() => handleNavigation('/catalog')}
+              className="text-black p-2 rounded hover:bg-blue-500 hover:text-white"
+            >
+              Catalog
+            </button>
+            <button
+              onClick={() => handleNavigation('/brands')}
+              className="text-black p-2 rounded hover:bg-blue-500 hover:text-white"
+            >
+              Brands
+            </button>
+            <button
+              onClick={() => handleNavigation('/garage')}
+              className="text-black p-2 rounded hover:bg-blue-500 hover:text-white"
+            >
+              My Garage
+            </button>
+          </div>
         </div>
 
+        {/* Right section */}
         <div className="flex items-center gap-4">
+          {/* Search */}
           <div className="hidden sm:flex relative w-40 lg:w-64">
             <Search className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input type="search" placeholder="Search parts..." className="pl-8" />
+            <Input 
+              type="search" 
+              placeholder="Search parts..." 
+              className="pl-8"
+            />
           </div>
-          <Button variant="ghost" size="icon">
-            <Link to="/cart">
-              <ShoppingCart className="h-5 w-5 text-black" />
-              <span className="sr-only">Shopping cart</span>
-            </Link>
-          </Button>
-          <Button variant="ghost" size="icon">
-            <Link to="/account">
-              <User className="h-5 w-5 text-black" />
-              <span className="sr-only">Account</span>
-            </Link>
-          </Button>
+
+          {/* Cart */}
+          <button
+            onClick={() => handleNavigation('/cart')}
+            className="text-black p-2 rounded hover:bg-blue-500 hover:text-white"
+          >
+            <ShoppingCart className="h-5 w-5" />
+          </button>
+
+          {/* Account */}
+          <button
+            onClick={() => handleNavigation('/account')}
+            className="text-black p-2 rounded hover:bg-blue-500 hover:text-white"
+          >
+            <User className="h-5 w-5" />
+          </button>
         </div>
       </div>
-    </header>
+    </div>
   );
 }
+
+export default Header;
