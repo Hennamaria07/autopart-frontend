@@ -1,5 +1,3 @@
-"use client"
-
 import * as React from "react"
 import { motion } from "framer-motion"
 import { Car, Search, ArrowRight } from "lucide-react"
@@ -8,10 +6,9 @@ import { Button } from "../components/ui/Button"
 import { Link } from "react-router-dom"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/Select"
 
-
 export default function HomePage() {
   const [searchQuery, setSearchQuery] = React.useState("")
-  const [plateNumber, setPlateNumber] = React.useState("")
+  // const [plateNumber, setPlateNumber] = React.useState("")
 
   const popularBrands = [
     { name: "Toyota", logo: "https://th.bing.com/th/id/OIP.lu3_UAgouMhR7AHaAdkQOQHaEK?w=1920&h=1080&rs=1&pid=ImgDetMain" },
