@@ -14,19 +14,19 @@ export default function HomePage() {
   const [plateNumber, setPlateNumber] = React.useState("")
 
   const popularBrands = [
-    { name: "Toyota", logo: "/placeholder.svg" },
-    { name: "Honda", logo: "/placeholder.svg" },
-    { name: "Ford", logo: "/placeholder.svg" },
-    { name: "BMW", logo: "/placeholder.svg" },
-    { name: "Mercedes", logo: "/placeholder.svg" },
-    { name: "Volkswagen", logo: "/placeholder.svg" },
+    { name: "Toyota", logo: "https://th.bing.com/th/id/OIP.lu3_UAgouMhR7AHaAdkQOQHaEK?w=1920&h=1080&rs=1&pid=ImgDetMain" },
+    { name: "Honda", logo: "https://www.motorbiscuit.com/wp-content/uploads/2022/01/Honda-logo.jpg?w=1024&h=681&strip=all&quality=89" },
+    { name: "Ford", logo: "https://th.bing.com/th/id/OIP.LosVjInRlcFVHgXOlWYvfQHaEo?rs=1&pid=ImgDetMain" },
+    { name: "BMW", logo: "https://images.unsplash.com/photo-1521058001910-55b77aba2203?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Ym13JTIwYnJhbmQlMjBsb2dvfGVufDB8fDB8fHww" },
+    { name: "Mercedes", logo: "https://th.bing.com/th/id/OIP.vgvY59iKjtdavLHEFo-eJwHaEK?rs=1&pid=ImgDetMain" },
+    { name: "Volkswagen", logo: "https://th.bing.com/th/id/OIP.YALadKdkxrg1ClIlvko4AgHaEK?rs=1&pid=ImgDetMain" },
   ]
 
   const featuredCategories = [
-    { name: "Brake System", image: "/placeholder.svg" },
-    { name: "Engine Parts", image: "/placeholder.svg" },
-    { name: "Suspension", image: "/placeholder.svg" },
-    { name: "Electrical", image: "/placeholder.svg" },
+    { name: "Brake System", image: "https://images.unsplash.com/photo-1599143125814-3fe66b6fecd8?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+    { name: "Engine Parts", image: "https://images.unsplash.com/photo-1429772011165-0c2e054367b8?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+    { name: "Suspension", image: "https://images.unsplash.com/photo-1599143125823-fecf49e7548b?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+    { name: "Center Console", image: "https://plus.unsplash.com/premium_photo-1693876592077-83dd243edbb2?q=80&w=1771&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
   ]
 
   return (
